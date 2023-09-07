@@ -2,13 +2,15 @@ version: '3'
 
 services:
   db:
-    image: mysql:latest
+    image: mysql:5.7.24
     container_name: mysql-localhost
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: Admin@123
     ports:
       - 3306:3306
+    networks:
+      - ntech
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -19,3 +21,9 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: Admin@123
+
+    networks:
+     - ntech
+
+networks:
+  ntech:
